@@ -1,0 +1,21 @@
+{
+  "name": "specflow.selenium",
+  "version": "0.0.1",
+  "description": "Web and and mWeb automation with SpecFlow Selenium and *Appium (todo)",
+  "homepage": "https://github.com/jukafah/cucumberjs-webdriverio",
+  "author": "Steve Momcilovic <smomcilovic@tapqa.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jukafah/cucumberjs-webdriverio.git"
+  },
+  "main": "./scripts.js",
+  "scripts": {
+    "test": "node scripts.js --test",
+    "build": "node scripts.js --build"
+  },
+  "devDependencies": {
+    "command-line-args": "3.0.2",
+    "shelljs": "0.6.0",
+    "selenium-standalone": "6.0.1"
+  }
+}
