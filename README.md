@@ -1,61 +1,53 @@
 # SpecFlow.Selenium
 
+The goal of this project is to provide a good starting point for those looking to use SpecFlow and Selenium together. It 
+is also intended to demonstrate how to implement design patterns in a test framework, where many test frameworks will 
+violate many different principles like SOLID, Static Cling (this one is always the most common), 
+and Explicit Dependencies.
+
 **Resources**
-- [SpecFlow](http://specflow.org/)
-- [Appium](http://appium.io/)
 - [Selenium](http://www.seleniumhq.org/)
+- [SpecFlow](http://specflow.org/)
+- [FluentAssertions](https://fluentassertions.com/)
+- [SOLID in Testing](http://www.absofttrainings.com/use-solid-principles-to-become-better-automation-tester/)
+- [The Wrong Abstraction](https://www.sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
+- [Basic Programming Principles](https://www.makeuseof.com/tag/basic-programming-principles/)
+- [Principles of Test Automation](http://xunitpatterns.com/Principles%20of%20Test%20Automation.html)
+- [Software Testing Anti-patterns](http://blog.codepipes.com/testing/software-testing-antipatterns.html)
+- [Overreliance on End to End Testing](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
+- [Cyclomatic and Cognitive Complexity](https://blog.sonarsource.com/cognitive-complexity-because-testability-understandability)
 
-## Setup - OSx
-
-Download and install [Xamarin Studio](https://www.xamarin.com/studio)
-
-Download and install [Xcode](https://developer.apple.com/xcode/)
-- After installation, be sure to open and accept the license agreements
 
 
-### Xamarin Studio Config
+### TODO
+- [x] .NET Framework
+- [x] Mac setup
+- [ ] Build scripts (cake?)
+- [ ] Windows setup
+- [ ] .NET Standard
+- [ ] Visual Studio guide
+- [ ] Appium
+- [ ] Docker Selenium Grid execution
 
-Open Xamarin Studio and configure the following;
 
-#### Install Add-ins
 
-Xamarin Studio => Add-ins
-- Testing => NUnit support
-- Gallery => SpecFlow support
+### Setup - OSx
 
-#### Configure SDKs
+Download and install [Visual Studio](https://visualstudio.microsoft.com/) or [JetBrains Rider](https://www.jetbrains.com/rider/)
 
-Xamarin Studio => Preferences => Projects => SDK Locations
+The required .net frameworks should download/install with your IDE of choice.
 
-Ensure Android SDK locations;
-- Android SDK: _path/to/android/sdk_
-- Java SDK: _path/to/java/sdk_
-- Android NDK: _path/to/android/ndk_
+#### JetBrains Rider
 
-Ensure Apple SDK locations;
-- Apple SDK: _path/to/xcode.app_
+No extra setup necessary
 
-### ENV Config
+#### Visual Studio
 
-#### ENV Vars
-
-Open a terminal and execute
-```
-$ open ~/.bash_profile
-```
-
-Add to bash profile
-```
-export ANDROID_HOME=/path/to/android/sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-export JAVA_HOME=$(/usr/libexec/java_home)
-```
-
-Save changes, close bash profile, close and reopen terminal.
+Visual Studio needs a little extra configuration. Install these extensions;
+- xUnit.NET 2
+- SpecFlow
 
 #### Install Homebrew
-
-Still in Terminal, execute the following commands:
 ```
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -66,73 +58,31 @@ $ brew doctor
 Your system is ready to brew
 ```
 
-#### Install Node
+#### Mono
 ```
-$ brew install node
-```
-
-Then
-```
-$ node --version
-v6.3.1
+$ brew install mono
 ```
 
 #### Git
-
-Still in terminal, execute
 ```
 $ brew install git
 ```
 
-Then
-```
-$ git --version
-git version 2.9.2
-```
+### Setup - Windows
 
-## Setup - Windows
+Download and install [Visual Studio](https://visualstudio.microsoft.com/) or [JetBrains Rider](https://www.jetbrains.com/rider/)
 
-Download and install [Visual Studio (2015 Enterprise)](https://www.visualstudio.com/downloads/)
+The required .net frameworks should download/install with your IDE of choice.
 
-### Visual Studio Config
+#### JetBrains Rider
 
-Open Visual Studio and configure the following;
+No extra setup necessary
 
-#### Install Add-ins
+#### Visual Studio
 
-Tools => Extensions
-- NUnit 3 Test Adapter
-- Xamarin Forms Player
-- Xamarin for Visual Studio 
-- Tools => Android => Android SDK Manager
-	- for Adroid versions LATEST to 4.1.2 : install
-			- SDK Platform
-			- Google APIs ARM EABI v7a System Imaga
-			- - - Google APIs Intel x 86 Atom System Image
-			- - - Google APIs
-- You may need to Create a Virtual Device under Tools => Android => Android Emulator Manager
-
-
-#### Configure SDKs
-
-Install [Android SDK](https://developer.android.com/studio/install.html)
-
-### ENV Config
-
-#### ENV Vars
-
-Open environment variables and edit User Variables;
-
-Create a new ENV var
-```
-ANDROID_HOME=\path\to\android\sdk
-```
-
-Append new entries to PATH
-```
-PATH=%ANDROID_HOME%\tools
-PATH=%ANDROID_HOME%\platform-tools
-```
+Visual Studio needs a little extra configuration. Install these extensions;
+- xUnit.NET 2
+- SpecFlow
 
 #### Install Scoop (Windows Homebrew alternative)
 
@@ -141,47 +91,67 @@ PATH=%ANDROID_HOME%\platform-tools
 - PowerShell must be enabled for User account
 
 ```
-set-executionpolicy unrestricted -s cu
+$ set-executionpolicy unrestricted -s cu
 ```
 
 Install:
 ```
-iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-```
-
-#### Install Node
-```
-scoop install nodejs-lts
+$ iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 ```
 
 #### Git
 ```
-scoop install git
+$ scoop install git
 ```
 
-### Running
+### Clone
+``
+$ git clone https://github.com/jukafah/csharp-specflow-selenium.git
+``
 
-#### IDE
+#### IDE - Rider
 
-- Build
-- Xamarin Studio: View => Test
-- Visual Studio: Tests => Windows => Test Explorer
+As of writing this guide, generating the code-behind `feature.cs` files requires invoking the generator separately.
+Ken Bonny wrote a couple good articles for generating those and how to configure it with File Watcher. The guide will
+also walk you through associating the files together.
 
-#### Local Execution
+[Generating SpecFlow Files in Rider](https://kenbonny.net/2018/05/28/generating-specflow-files-in-rider/)
 
-Install dependencies
+[SpecFlow Steps Generation](https://kenbonny.net/2018/07/23/specflow-steps-generation-and-general-rider-changes/)
+
+
+Restore dependencies
 ```
-$ npm install
+$ nuget restore
 ```
 
-Build project
+From solution directory
 ```
-$ npm run build
+$ mono "packages/SpecFlow.2.4.1/tools/specflow.exe" GenerateAll -p SpecFlow.Selenium/SpecFlow.Selenium.csproj
+```
+
+Import the generated `feature.cs` files to the same directory as your features.
+
+Tests will now show in the Unit Tests / Test Explorer.
+
+#### IDE - Visual Studio
+
+TODO
+
+#### Running Tests
+You can run them in the Unit Test explorer of your chosen IDE or via command line
+
+Build
+```
+$ msbuild
 ```
 
 Run tests
 ```
-$ TEST=<test> npm run test
+$ mono "packages/xunit.runner.console.2.4.1/tools/net452/xunit.console.exe" SpecFlow.Selenium/bin/Debug/SpecFlow.Selenium.dll -xml ./TestResults/xunit.xml
 ```
 
-TEST can be comma delimited list of tests: <C001,C002,C003>
+Then you can generate a nice html report via Pickles
+```
+$ mono "packages/Pickles.CommandLine.2.20.1/tools/pickles.exe" --feature-directory=SpecFlow.Selenium/Features/ --output-directory=./TestResults/pickles --link-results-file=./TestResults/xunit.xml --documentation-format=dhtml --test-results-format=xunit2
+```

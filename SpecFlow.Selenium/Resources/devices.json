@@ -1,28 +1,25 @@
 ﻿{
-  "Android_Emulator": {
+  "android_emulator": {
     "deviceName": "Device_Name",
     "platformName": "Android",
     "platformVersion": "x.x.x",
     "avd": "Device_Name",
     "avdReadyTimeout": 60000
   },
-
-  "Android_Physical_Device": {
+  "android_physical_device": {
     "deviceName": "Device_Name",
     "platformName": "Android",
     "platformVersion": "x.x.x",
     "udid": "udid"
   },
-
-  "iPhone_Simulator": {
+  "iphone_simulator": {
     "deviceName": "Device_Name",
     "platformName": "iOS",
     "platformVersion": "x.x",
     "autoAcceptAlerts": "true",
     "automationName": "XCUITEST"
   },
-
-  "iPhone_Device": {
+  "iphone_device": {
     "deviceName": "Device_Name",
     "platformName": "iOS",
     "platformVersion": "x.x",
@@ -30,28 +27,23 @@
     "automationName": "XCUITEST)",
     "udid": "udid"
   },
-
-  "Chrome": {
+  "chrome": {
     "browserName": "chrome",
     "platformName": "desktop"
   },
-
-  "Firefox": {
+  "firefox": {
     "browserName": "firefox",
     "platformName": "desktop"
   },
-
-  "Safari": {
+  "safari": {
     "browserName": "safari",
     "platformName": "desktop"
   },
-
-  "IE": {
+  "ie": {
     "browserName": "internet explorer",
     "platformName": "desktop"
   },
-
-  "Edge": {
+  "edge": {
     "browserName": "edge",
     "platformName": "desktop"
   }
