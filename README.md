@@ -151,6 +151,11 @@ Run tests
 $ mono "packages/xunit.runner.console.2.4.1/tools/net452/xunit.console.exe" SpecFlow.Selenium/bin/Debug/SpecFlow.Selenium.dll -xml ./TestResults/xunit.xml
 ```
 
+Selection of browser is through an environment variable. Defaults to Chrome if unprovided.
+```
+$ BROWSER=firefox mono "packages/xunit.runner.console.2.4.1/tools/net452/xunit.console.exe" SpecFlow.Selenium/bin/Debug/SpecFlow.Selenium.dll -xml ./TestResults/xunit.xml
+```
+
 Then you can generate a nice html report via Pickles
 ```
 $ mono "packages/Pickles.CommandLine.2.20.1/tools/pickles.exe" --feature-directory=SpecFlow.Selenium/Features/ --output-directory=./TestResults/pickles --link-results-file=./TestResults/xunit.xml --documentation-format=dhtml --test-results-format=xunit2

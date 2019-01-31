@@ -45,5 +45,46 @@ namespace SpecFlow.Selenium.StepDefinitions
         {
             _page.AssertParagraphsGeneration(_testData.LoremIpsum);
         }
+        
+        [Then(@"the words are generated correctly")]
+        public void ThenTheWordsAreGeneratedCorrectly()
+        {
+            _page.AssertWordsGeneration(_testData.LoremIpsum);
+        }
+        
+        [When(@"I generate (.*) bytes of text with default starting text")]
+        public void WhenIGenerateBytesOfTextWithDefaultStartingText(int amount)
+        {
+            _page.GenerateAsBytesWithStartText(amount);
+        }
+        
+        [Then(@"(.*) bytes of text generates and ""(.*)"" exact match is (.*)")]
+        public void ThenBytesOfTextGeneratesAndExactMatchIsTrue(int amount, string startText, bool exactMatch)
+        {
+            _page.AssertBytesGeneration(amount, startText, exactMatch);
+        }
+        
+        // can combine gherkin to run same step in effort to be more readable
+        [When(@"I generate ""(.*)"" list without default starting text")]
+        [When(@"I generate ""(.*)"" lists without default starting text")]
+        public void WhenIGenerateListWithoutDefaultStartingText(int amount)
+        {
+            // different usage of keeping test data
+            _page.GenerateListWithoutStartText(_testData, amount);
+        }    
+        
+        // can combine gherkin to run same step in effort to be more readable
+        [When(@"I generate ""(.*)"" list with default starting text")]
+        [When(@"I generate ""(.*)"" lists with default starting text")]
+        public void WhenIGenerateListsWithDefaultStartingText(int amount)
+        {
+            _page.GenerateListWithStartText(_testData, amount);
+        }
+        
+        [Then(@"the list generates correctly")]
+        public void ThenTheListGeneratesCorrectly()
+        {
+            _page.AssertListsGeneration(_testData);
+        }       
     }
 }

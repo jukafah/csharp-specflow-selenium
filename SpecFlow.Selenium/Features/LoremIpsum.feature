@@ -2,11 +2,7 @@
 		As a User,
 		I can generate variations of Lorem Ipsum text
 	
-#Scenario: Generated text counts amount of generated text
-#	Given I am on the homepage
-#	When I generate text
-#	Then the calculated amount of generated text displays
-	
+# Using tables to create class objects
 Scenario: Paragraphs - Generate with starting text
 	Given I am on the homepage
 	When I generate text with default starting text
@@ -20,39 +16,58 @@ Scenario: Paragraphs - Generate without starting text
 	| Amount | Text Generation Type | Start With Default Text |
 	| 5      | Paras           		| False                   |
 	Then the paragraphs are generated correctly
+
+Scenario: Words - Generate with starting text
+	Given I am on the homepage
+	When I generate text with default starting text
+		| Amount | Text Generation Type | Start With Default Text |
+		| 5      | Words           		| True                    |
+	Then the words are generated correctly
+
+Scenario: Words - Generate without starting text
+	Given I am on the homepage
+	When I generate text without default starting text
+		| Amount | Text Generation Type | Start With Default Text |
+		| 5      | Words           		| False                   |
+	Then the words are generated correctly
+
+# Scenario Outlines for testing boundaries
+Scenario Outline: Bytes - Generating less than 28 bytes of text is exact match with default text
+	Given I am on the homepage
+	When I generate <amount> bytes of text with default starting text
+	Then <expectedAmount> bytes of text generates and "Lorem ipsum dolor sit amet." exact match is <value>
 	
+Scenarios:
+	| amount	| expectedAmount 	| value	|
+	| 0 		| 27				| true  |
+	| 14  		| 27  				| true	|
+	| 27    	| 27     			| true	|
+	| 28     	| 28				| false	|
 	
-#Scenario: Paragraphs - Generate without starting text
-#	Given I am on the homepage
-#	When I generate <1> paragraph without starting text
-#	Then the correct amount of paragraphs are generated
-#	
-#Scenario: Paragraphs - Generate with starting text v2
-#	Given I am on the homepage
-#	When I generate text
-#	  |Count	|Type		|Starting Text	|
-#	  |10     	|Paragraph	|True       	|
-#	Then the generated text matches
-#	
-#Scenario Outline: Generate text with
-#	Given I am on the homepage
-#	When I generate paragraphs with <amount> and <start_text>
-#	Then the paragraph generates with <amount> and <start_text>
-#	
-#Scenarios:
-#	|amount | start_text |
-#	| 1     | true       |
-#	| 5     | false      |
-#	
-#Scenario: Words - Generates correct amount with "Start with 'Lorem ipsum dolor sit amet...'" selected
-#	
-#Scenario: Words - Generates correct amount without "Start with 'Lorem ipsum dolor sit amet...'" selected
-#	
-#Scenario: Bytes - Generates correct amount with "Start with 'Lorem ipsum dolor sit amet...'" selected
-#	
-#Scenario: Bytes - Generates correct amount without "Start with 'Lorem ipsum dolor sit amet...'" selected
-#	
-#Scenario: Lists - Generates correct amount with "Start with 'Lorem ipsum dolor sit amet...'" selected
-#	
-#Scenario: Lists - Generates correct amount without "Start with 'Lorem ipsum dolor sit amet...'" selected
+Scenario: Lists - Generate single list with starting text
+	Given I am on the homepage
+	When I generate "1" list with default starting text
+	Then the list generates correctly
 	
+Scenario: Lists - Generate single list without starting text
+	Given I am on the homepage
+	When I generate "1" list without default starting text
+	Then the list generates correctly
+
+Scenario: Lists - Generate multiple lists with starting text
+	Given I am on the homepage
+	When I generate "8" lists with default starting text
+	Then the list generates correctly
+
+Scenario: Lists - Generate multiple lists without starting text
+	Given I am on the homepage
+	When I generate "8" lists without default starting text
+	Then the list generates correctly
+	
+Scenario: DocString - This is a Doc String
+	Given I am on the homepage
+	When I generate text
+	Then I am presented with
+	"""
+	Stuff is generated
+	"""

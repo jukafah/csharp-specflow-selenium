@@ -52,6 +52,7 @@
     <Compile Include="StepDefinitions\DemoSteps.cs" />
     <Compile Include="StepDefinitions\LoremIpsumSteps.cs" />
     <Compile Include="Support\Hooks.cs" />
+    <Compile Include="Utility\Extensions.cs" />
     <Compile Include="Utility\Utility.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -82,10 +82,10 @@ namespace SpecFlow.Selenium.Features
         public virtual void Paragraphs_GenerateWithStartingText()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Paragraphs - Generate with starting text", null, ((string[])(null)));
-#line 10
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 11
+#line 7
  testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -96,9 +96,9 @@ this.ScenarioInitialize(scenarioInfo);
                         "5",
                         "Paras",
                         "True"});
-#line 12
+#line 8
  testRunner.When("I generate text with default starting text", ((string)(null)), table1, "When ");
-#line 15
+#line 11
  testRunner.Then("the paragraphs are generated correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -110,10 +110,10 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void Paragraphs_GenerateWithoutStartingText()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Paragraphs - Generate without starting text", null, ((string[])(null)));
-#line 17
+#line 13
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 18
+#line 14
  testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -124,10 +124,185 @@ this.ScenarioInitialize(scenarioInfo);
                         "5",
                         "Paras",
                         "False"});
-#line 19
+#line 15
  testRunner.When("I generate text without default starting text", ((string)(null)), table2, "When ");
-#line 22
+#line 18
  testRunner.Then("the paragraphs are generated correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Words - Generate with starting text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Words - Generate with starting text")]
+        public virtual void Words_GenerateWithStartingText()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Words - Generate with starting text", null, ((string[])(null)));
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 21
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Amount",
+                        "Text Generation Type",
+                        "Start With Default Text"});
+            table3.AddRow(new string[] {
+                        "5",
+                        "Words",
+                        "True"});
+#line 22
+ testRunner.When("I generate text with default starting text", ((string)(null)), table3, "When ");
+#line 25
+ testRunner.Then("the words are generated correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Words - Generate without starting text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Words - Generate without starting text")]
+        public virtual void Words_GenerateWithoutStartingText()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Words - Generate without starting text", null, ((string[])(null)));
+#line 27
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 28
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Amount",
+                        "Text Generation Type",
+                        "Start With Default Text"});
+            table4.AddRow(new string[] {
+                        "5",
+                        "Words",
+                        "False"});
+#line 29
+ testRunner.When("I generate text without default starting text", ((string)(null)), table4, "When ");
+#line 32
+ testRunner.Then("the words are generated correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="Bytes - Generating less than 28 bytes of text is exact match with default text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Bytes - Generating less than 28 bytes of text is exact match with default text")]
+        [Xunit.InlineDataAttribute("0", "27", "true", new string[0])]
+        [Xunit.InlineDataAttribute("14", "27", "true", new string[0])]
+        [Xunit.InlineDataAttribute("27", "27", "true", new string[0])]
+        [Xunit.InlineDataAttribute("28", "28", "false", new string[0])]
+        public virtual void Bytes_GeneratingLessThan28BytesOfTextIsExactMatchWithDefaultText(string amount, string expectedAmount, string value, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Bytes - Generating less than 28 bytes of text is exact match with default text", null, exampleTags);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 36
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 37
+ testRunner.When(string.Format("I generate {0} bytes of text with default starting text", amount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 38
+ testRunner.Then(string.Format("{0} bytes of text generates and \"Lorem ipsum dolor sit amet.\" exact match is {1}", expectedAmount, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Lists - Generate single list with starting text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Lists - Generate single list with starting text")]
+        public virtual void Lists_GenerateSingleListWithStartingText()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lists - Generate single list with starting text", null, ((string[])(null)));
+#line 47
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 48
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 49
+ testRunner.When("I generate \"1\" list with default starting text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 50
+ testRunner.Then("the list generates correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Lists - Generate single list without starting text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Lists - Generate single list without starting text")]
+        public virtual void Lists_GenerateSingleListWithoutStartingText()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lists - Generate single list without starting text", null, ((string[])(null)));
+#line 52
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 53
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
+ testRunner.When("I generate \"1\" list without default starting text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
+ testRunner.Then("the list generates correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Lists - Generate multiple lists with starting text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Lists - Generate multiple lists with starting text")]
+        public virtual void Lists_GenerateMultipleListsWithStartingText()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lists - Generate multiple lists with starting text", null, ((string[])(null)));
+#line 57
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 58
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 59
+ testRunner.When("I generate \"8\" lists with default starting text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 60
+ testRunner.Then("the list generates correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Lists - Generate multiple lists without starting text")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "Lists - Generate multiple lists without starting text")]
+        public virtual void Lists_GenerateMultipleListsWithoutStartingText()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lists - Generate multiple lists without starting text", null, ((string[])(null)));
+#line 62
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 63
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 64
+ testRunner.When("I generate \"8\" lists without default starting text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 65
+ testRunner.Then("the list generates correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="DocString - This is a Doc String")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lorem Ipsum")]
+        [Xunit.TraitAttribute("Description", "DocString - This is a Doc String")]
+        public virtual void DocString_ThisIsADocString()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DocString - This is a Doc String", null, ((string[])(null)));
+#line 67
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 68
+ testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 69
+ testRunner.When("I generate text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 70
+ testRunner.Then("I am presented with", "Stuff is generated", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
